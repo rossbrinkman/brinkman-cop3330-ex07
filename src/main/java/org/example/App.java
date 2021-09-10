@@ -1,4 +1,6 @@
 package org.example;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 /*
@@ -10,22 +12,28 @@ public class App
 {
     public static void main( String[] args )
     {
-        System.out.println( "What is the first number? " );
+        System.out.println( "What is the length of the room in feet? " );
 
         Scanner scanner = new Scanner(System.in);
-        String first, second;
-        int firstNumber, secondNumber;
+        int length, width, squareFeet;
+        float squareMeters;
 
-        first = scanner.nextLine();
-        firstNumber = Integer.parseInt(first);
+        length = scanner.nextInt();
 
-        System.out.println( "What is the second number? " );
-        second = scanner.nextLine();
-        secondNumber = Integer.parseInt(second);
+        System.out.println( "What is the width of the room in feet? " );
+        width = scanner.nextInt();
 
-        System.out.println( firstNumber + " + " + secondNumber + " = " + (firstNumber+secondNumber));
-        System.out.println( firstNumber + " - " + secondNumber + " = " + (firstNumber-secondNumber));
-        System.out.println( firstNumber + " * " + secondNumber + " = " + (firstNumber*secondNumber));
-        System.out.println( firstNumber + " / " + secondNumber + " = " + (firstNumber/secondNumber));
+        squareFeet = length * width;
+
+        DecimalFormat df = new DecimalFormat("#.###");
+        df.setRoundingMode(RoundingMode.CEILING);
+
+        squareMeters = squareFeet * .092903f;
+
+        System.out.println( "You entered dimensions of " + length + " feet by " + width + " feet.\n" +
+                "The area is\n" +
+                squareFeet + " square feet\n" +
+                df.format(squareMeters) + " square meters" );
+
     }
 }
