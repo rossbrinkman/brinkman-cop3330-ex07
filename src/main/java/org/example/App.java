@@ -17,6 +17,7 @@ public class App
         Scanner scanner = new Scanner(System.in);
         int length, width, squareFeet;
         float squareMeters;
+        final float conversionFactor = .092903f;
 
         length = scanner.nextInt();
 
@@ -28,7 +29,7 @@ public class App
         DecimalFormat df = new DecimalFormat("#.###");
         df.setRoundingMode(RoundingMode.CEILING);
 
-        squareMeters = squareFeet * .092903f;
+        squareMeters = squareFeet * conversionFactor;
 
         System.out.println( "You entered dimensions of " + length + " feet by " + width + " feet.\n" +
                 "The area is\n" +
